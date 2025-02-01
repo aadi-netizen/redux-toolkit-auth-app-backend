@@ -2,12 +2,15 @@
 const { Router } = require('express')
 
 // Local Modules
-const { loginAuth } = require('../controllers/authControllers')
+const { loginAuth, ragisterAuth } = require('../controllers/authControllers')
 
 // Initialization
 const router = Router()
 
-// Requests
-router.post('/', loginAuth)
+// Login Request
+router.post('/login', loginAuth)
+
+// ragister Request
+router.post('/ragister', ragisterAuth)
 
 module.exports = router
