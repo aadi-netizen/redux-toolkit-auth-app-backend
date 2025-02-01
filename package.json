@@ -1,0 +1,16 @@
+{
+  "name": "redux-toolkit-auth-app-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "keywords": [],
+  "author": "Aditya Chaudhary",
+  "license": "ISC",
+  "description": ""
+}
