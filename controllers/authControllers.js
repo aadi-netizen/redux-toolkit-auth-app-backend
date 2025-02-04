@@ -1,8 +1,9 @@
 const fs = require('fs')
+const jwt = require('jsonwebtoken')
 
 // Methods to be executed on routes
 const loginAuth = (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   fs.readFile('./data.json', 'utf8', (err, data) => {
     if (err) {
       console.log(err)
@@ -11,7 +12,13 @@ const loginAuth = (req, res) => {
       const user = userArray.find((user) => user.email === req.body.email)
       if (user) {
         if (user.password === req.body.password) {
-          res.send('User Logged in Successfully')
+          const token = jwt.sign(
+            { email: user.email },
+            process.env.ACCESS_TOKEN_SECRET
+          )
+          // console.log('Token: ', token)
+
+          res.send({ token: token, email: user.email })
         } else {
           res.send('Password is Incorrect')
         }
@@ -23,7 +30,7 @@ const loginAuth = (req, res) => {
 }
 
 const ragisterAuth = (req, res) => {
-  console.log(req.body)
+  console.log('Ragistration Form data: ', req.body)
   fs.readFile('./data.json', 'utf8', (err, data) => {
     if (err) {
       console.log(err)
